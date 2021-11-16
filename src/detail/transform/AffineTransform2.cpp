@@ -22,6 +22,8 @@
 
 #include <SFCGAL/Point.h>
 
+#include <utility>
+
 namespace SFCGAL {
 namespace transform {
 
@@ -29,7 +31,7 @@ namespace transform {
 ///
 ///
 AffineTransform2::AffineTransform2( CGAL::Aff_transformation_2< Kernel > transform ):
-    _transform( transform )
+    _transform( std::move(transform) )
 {
 
 }

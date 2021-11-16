@@ -815,7 +815,7 @@ std::unique_ptr<Geometry> GeometrySet<Dim>::recompose() const
         }
     }
 
-    GeometryCollection* ret = 0;
+    GeometryCollection* ret = nullptr;
 
     if ( hasCommonType ) {
         if ( commonType == TYPE_POINT ) {

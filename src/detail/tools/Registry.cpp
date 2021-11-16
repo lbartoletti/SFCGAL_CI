@@ -40,7 +40,7 @@
 namespace SFCGAL {
 namespace tools {
 
-Registry* Registry::_instance = 0 ;
+Registry* Registry::_instance = nullptr ;
 
 ///
 ///

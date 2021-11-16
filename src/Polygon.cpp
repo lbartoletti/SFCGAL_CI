@@ -115,7 +115,7 @@ Polygon::Polygon( const CGAL::Polygon_2< Kernel >& other )
 Polygon::Polygon( const CGAL::Polygon_with_holes_2< Kernel >& poly )
 {
     _rings.push_back( new LineString() );
-    CGAL::Polygon_2<Kernel> outer = poly.outer_boundary();
+    const CGAL::Polygon_2<Kernel>& outer = poly.outer_boundary();
     CGAL::Polygon_2<Kernel>::Edge_const_iterator ei;
 
     for ( ei = outer.edges_begin(); ei != outer.edges_end(); ++ei ) {

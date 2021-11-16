@@ -171,10 +171,10 @@ extern "C" int sfcgal_geometry_is_valid_detail( const sfcgal_geometry_t* geom, c
 {
     // invalidity location is not supported for now
     if ( invalidity_location )
-        *invalidity_location = 0;
+        *invalidity_location = nullptr;
     // set to null for now
     if ( invalidity_reason )
-        *invalidity_reason = 0;
+        *invalidity_reason = nullptr;
 
     const SFCGAL::Geometry* g = reinterpret_cast<const SFCGAL::Geometry*>( geom );
     if ( g->hasValidityFlag() )
@@ -673,7 +673,7 @@ extern "C" sfcgal_prepared_geometry_t* sfcgal_io_read_binary_prepared( const cha
     catch ( std::exception& e ) {
         SFCGAL_WARNING( "During read_binary_prepared" );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return g.release();
@@ -688,7 +688,7 @@ extern "C" sfcgal_prepared_geometry_t* sfcgal_io_read_ewkt( const char* str, siz
     }
     catch ( std::exception& e ) {
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     SFCGAL::PreparedGeometry* pg = g.release();
@@ -886,7 +886,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_make_solid( const sfcgal_geometry_
 
     if ( g->geometryTypeId() != SFCGAL::TYPE_POLYHEDRALSURFACE ) {
         SFCGAL_ERROR( "make_solid() only applies to polyhedral surfaces" );
-        return 0;
+        return nullptr;
     }
 
     return static_cast<SFCGAL::Geometry*>( new SFCGAL::Solid( g->as<const SFCGAL::PolyhedralSurface>() ) );
@@ -905,7 +905,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_force_lhr( const sfcgal_geometry_t
         SFCGAL_WARNING( "During force_lhr(A) :" );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return gb;
@@ -924,7 +924,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_force_rhr( const sfcgal_geometry_t
         SFCGAL_WARNING( "During force_rhr(A) :" );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return gb;
@@ -944,7 +944,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_triangulate_2dz( const sfcgal_geom
         SFCGAL_WARNING( "During triangulate_2d(A) :" );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return static_cast<SFCGAL::Geometry*>( surf );
@@ -965,7 +965,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_extrude( const sfcgal_geometry_t* 
         SFCGAL_WARNING( "During extrude(A, %g, %g, %g) :", x, y, z );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return result.release();
@@ -986,7 +986,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_round( const sfcgal_geometry_t* ga
         SFCGAL_WARNING( "During round(A):" );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     //	SFCGAL_WARNING( "processed geom: %s", gb->asText().c_str() );
@@ -1000,7 +1000,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_minkowski_sum( const sfcgal_geomet
 
     if ( g2->geometryTypeId() != SFCGAL::TYPE_POLYGON ) {
         SFCGAL_ERROR( "minkowski_sum(): the second argument must be a polygon" );
-        return 0;
+        return nullptr;
     }
 
     std::unique_ptr<SFCGAL::Geometry> sum;
@@ -1013,7 +1013,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_minkowski_sum( const sfcgal_geomet
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_WARNING( "   and B: %s", ( ( const SFCGAL::Geometry* )( gb ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return sum.release();
@@ -1031,7 +1031,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_offset_polygon( const sfcgal_geome
         SFCGAL_WARNING( "During offset(A,%g):", offset );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( ga ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return mp.release();
@@ -1061,7 +1061,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_straight_skeleton_distance_in_m( c
         SFCGAL_WARNING( "During straight_skeleton_distance_in_m(A):" );
         SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( geom ) )->asText().c_str() );
         SFCGAL_ERROR( "%s", e.what() );
-        return 0;
+        return nullptr;
     }
 
     return mls.release();
@@ -1072,7 +1072,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_line_sub_string( const sfcgal_geom
     const SFCGAL::Geometry* g1 = reinterpret_cast<const SFCGAL::Geometry*>( geom );
     if ( g1->geometryTypeId() != SFCGAL::TYPE_LINESTRING ) {
         SFCGAL_ERROR( "line_sub_string(): the first argument must be a lineString" );
-        return 0;
+        return nullptr;
     }
     std::unique_ptr<SFCGAL::LineString> ls;
     try {
@@ -1082,7 +1082,7 @@ extern "C" sfcgal_geometry_t* sfcgal_geometry_line_sub_string( const sfcgal_geom
       SFCGAL_WARNING( "During line_sub_string(A, %g, %g):", start, end );
       SFCGAL_WARNING( "  with A: %s", ( ( const SFCGAL::Geometry* )( geom ) )->asText().c_str() );
       SFCGAL_ERROR( "%s", e.what() );
-      return 0;
+      return nullptr;
     }
 
     return ls.release();

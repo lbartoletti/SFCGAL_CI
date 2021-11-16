@@ -80,7 +80,7 @@ void straightSkeletonToMultiLineString(
             continue ;
         }
 
-        LineString* ls = 0;
+        LineString* ls = nullptr;
         if ( outputDistanceInM ) {
             Point pa( it->opposite()->vertex()->point() );
             Point pb( it->vertex()->point() );

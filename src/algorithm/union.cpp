@@ -517,7 +517,7 @@ void union_point_surface( Handle<3> a,Handle<3> b )
     }
 }
 
-void union_point_volume( Handle<2> ,Handle<2>  )
+void union_point_volume( const Handle<2>& ,const Handle<2>&  )
 {
     BOOST_ASSERT( false ); // there shouldn't be any volume in 2D
 }
@@ -555,12 +555,12 @@ void union_segment_segment( Handle<Dim> a,Handle<Dim> b )
     }
 }
 
-void union_segment_segment( Handle<2> a,Handle<2> b )
+void union_segment_segment( const Handle<2>& a,const Handle<2>& b )
 {
     union_segment_segment<2>( a, b );
 }
 
-void union_segment_segment( Handle<3> a,Handle<3> b )
+void union_segment_segment( const Handle<3>& a,const Handle<3>& b )
 {
     union_segment_segment<3>( a, b );
 }
@@ -620,7 +620,7 @@ void union_segment_surface( Handle<3> a,Handle<3> b )
     }
 }
 
-void union_segment_volume( Handle<2> ,Handle<2> )
+void union_segment_volume( const Handle<2>& ,const Handle<2>& )
 {
     BOOST_ASSERT( false ); // there shouldn't be any volume in 2D
 }
@@ -728,7 +728,7 @@ void union_surface_surface( Handle<3> a,Handle<3> b )
     }
 }
 
-void union_surface_volume( Handle<2> ,Handle<2> )
+void union_surface_volume( const Handle<2>& ,const Handle<2>& )
 {
     BOOST_ASSERT( false ); // there shouldn't be any volume in 2D
 }
@@ -744,7 +744,7 @@ void union_surface_volume( Handle<3> a,Handle<3> b )
     }
 }
 
-void union_volume_volume( Handle<2> ,Handle<2> )
+void union_volume_volume( const Handle<2>& ,const Handle<2>& )
 {
     BOOST_ASSERT( false ); // there shouldn't be any volume in 2D
 }

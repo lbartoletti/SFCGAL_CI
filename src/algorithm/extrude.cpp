@@ -42,6 +42,8 @@
 
 #include <SFCGAL/detail/tools/Log.h>
 
+#include <utility>
+
 
 namespace SFCGAL {
 namespace algorithm {
@@ -363,7 +365,7 @@ std::unique_ptr< Geometry > extrude( const Geometry& g, Kernel::FT dx, Kernel::F
 std::unique_ptr< Geometry > extrude( const Geometry& g, Kernel::FT dx, Kernel::FT dy, Kernel::FT dz )
 {
     SFCGAL_ASSERT_GEOMETRY_VALIDITY( g );
-    std::unique_ptr<Geometry> result( extrude( g, dx, dy, dz, NoValidityCheck() ) );
+    std::unique_ptr<Geometry> result( extrude( g, std::move(dx), std::move(dy), std::move(dz), NoValidityCheck() ) );
     propagateValidityFlag( *result, true );
     return result;
 }

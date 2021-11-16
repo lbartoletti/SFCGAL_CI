@@ -68,7 +68,7 @@ std::unique_ptr<Geometry> collectionHomogenize( std::unique_ptr<Geometry> g )
         return g;
     }
 
-    GeometryCollection* ret_geo = 0;
+    GeometryCollection* ret_geo = nullptr;
 
     if ( common_type == TYPE_POINT ) {
         ret_geo = new MultiPoint;
