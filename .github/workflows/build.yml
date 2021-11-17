@@ -51,7 +51,7 @@ jobs:
       - name: Run build-wrapper
         run: |
           mkdir build
-          CGAL_DIR=$GITHUB_PATH/CGAL-5.3 cmake -S . -B build -DSFCGAL_BUILD_TESTS=ON -DCGAL_DIR=$GITHUB_PATH/CGAL-5.3
+          CGAL_DIR=/home/runner/work/SFCGAL_CI/SFCGAL_CI/CGAL-5.3/build cmake -S . -B build -DSFCGAL_BUILD_TESTS=ON -DCGAL_DIR=/home/runner/work/SFCGAL_CI/SFCGAL_CI/CGAL-5.3/build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
       - name: Run sonar-scanner
         env:
