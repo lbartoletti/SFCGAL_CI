@@ -16,4 +16,4 @@ tar xJf CGAL-"$2".tar.xz
 cd CGAL-"$2" ;
 mkdir build ;
 cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$1/CGAL ;
-cmake --build build/ --target install --config Release
+sudo cmake --build build/ --target install --config Release
