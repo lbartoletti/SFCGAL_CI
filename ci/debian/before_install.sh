@@ -17,4 +17,4 @@ cd CGAL-"$2" ;
 mkdir build ;
 cmake  .. ;
 cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$1/CGAL ;
-cmake --build build/ --config Release
+cmake --build build/ --target install --config Release
