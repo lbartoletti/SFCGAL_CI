@@ -12,4 +12,4 @@ sudo apt-get install --yes \
 wget https://github.com/CGAL/cgal/releases/download/v"$2"/CGAL-"$2".tar.xz
 tar xJf CGAL-"$2".tar.xz
 echo "$1"
-cd CGAL-"$2" && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=$1/CGAL .. && make && make install && cd ../..
+cd CGAL-"$2" && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=$1/CGAL .. && make && cd ../..
