@@ -47,9 +47,9 @@ jobs:
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
       - name: Install dependencies
         run: |
-          sh ci/debian/before_install.sh $GITHUB_PATH 5.3
           ls
           pwd
+          sh ci/debian/before_install.sh $GITHUB_PATH 5.3
       - name: Run build-wrapper
         run: |
           mkdir build

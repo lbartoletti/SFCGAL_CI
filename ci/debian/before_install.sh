@@ -14,6 +14,6 @@ sudo apt-get install --yes \
 wget https://github.com/CGAL/cgal/releases/download/v"$2"/CGAL-"$2".tar.xz
 tar xJf CGAL-"$2".tar.xz
 cd CGAL-"$2" ;
-mkdir build ;
-cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$1/CGAL -DCMAKE_BUILD_TYPE=Release ;
-sudo cmake --build build --target install --config Release
+mkdir CGAL ;
+cmake -S . -B CGAL -DCMAKE_BUILD_TYPE=Release ;
+sudo cmake --build CGAL --config Release
