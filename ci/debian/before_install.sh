@@ -1,6 +1,4 @@
 #!/bin/sh
-
-set -e
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update -qq
 sudo apt-get install --yes \
@@ -13,7 +11,4 @@ sudo apt-get install --yes \
 
 wget https://github.com/CGAL/cgal/releases/download/v"$2"/CGAL-"$2".tar.xz
 tar xJf CGAL-"$2".tar.xz
-cd CGAL-"$2" ;
-mkdir CGAL ;
-cmake -S . -B CGAL -DCMAKE_BUILD_TYPE=Release ;
-sudo cmake --build CGAL --config Release
+cd CGAL-"$2" && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=$1/CGAL .. && make && make install && cd ../..
